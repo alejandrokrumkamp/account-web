@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public enum TransactionType {
 
-  @SerializedName("status")
+  @SerializedName("deposit")
   DEPOSIT(),
   @SerializedName("withdraw")
   WITHDRAW(),

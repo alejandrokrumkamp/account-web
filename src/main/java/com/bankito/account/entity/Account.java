@@ -1,6 +1,7 @@
 package com.bankito.account.entity;
 
 public class Account {
+
   private String id;
   private String owner;
 

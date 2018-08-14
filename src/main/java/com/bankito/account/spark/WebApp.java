@@ -37,12 +37,12 @@ public class WebApp implements SparkApplication {
     MysqlDataSource rootDs = new MysqlDataSource();
     MysqlDataSource ds = new MysqlDataSource();
 
-    rootDs.setServerName("192.168.99.100");
+    rootDs.setServerName("127.0.0.1");
     rootDs.setPort(3306);
     rootDs.setUser("root");
     rootDs.setPassword("password");
 
-    ds.setServerName("192.168.99.100");
+    ds.setServerName("127.0.0.1");
     ds.setPort(3306);
     ds.setUser("root");
     ds.setPassword("password");
@@ -62,7 +62,7 @@ public class WebApp implements SparkApplication {
     final GetTransactionRoute getTransactionRoute = new GetTransactionRoute(transactions);
     final SaveAccountRoute saveAccountRoute = new SaveAccountRoute(accounts);
     final NewTransactionRoute newTransactionRoute = new NewTransactionRoute(transactions);
-    final GetCurrentBalanceRoute getCurrentBalance = new GetCurrentBalanceRoute();
+    final GetCurrentBalanceRoute getCurrentBalance = new GetCurrentBalanceRoute(movements);
     final GetMovementByAccountIdRoute getMovementsByAccountIdRoute = new GetMovementByAccountIdRoute(movements);
     final GetMovementByIdRoute getMovementRoute = new GetMovementByIdRoute(movements);
     final RecreateDbRoute recreateDbRoute = new RecreateDbRoute(rootJdbi);
