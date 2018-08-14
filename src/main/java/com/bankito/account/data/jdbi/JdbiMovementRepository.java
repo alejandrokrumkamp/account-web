@@ -62,7 +62,11 @@ public class JdbiMovementRepository implements MovementRepository {
                 (rs, ctx) -> new Balance(rs.getLong("amount"));
                 
 	    return jdbi.withHandle(handle -> {
-	    	return handle.createQuery("SELECT COUNT(1) amount FROM account")
+	    	return handle.createQuery("SELECT SUM(amount) amount FROM movement m "
+	    			+ "JOIN transaction tx "
+	    			+ "ON m.transaction_id = tx.id "
+	    			+ "WHERE tx.owner_account_id = "
+	    			+ accountId)
 	      				.map(balanceMapper)
 	      				.findFirst();
 	      
